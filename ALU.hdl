@@ -55,8 +55,7 @@ CHIP ALU {
 
     // negating output
     Not16(in=tOut3, out=tOut4);
-    Mux16(a=tOut3, b=tOut4, sel=no, out=out, out=outFlag, out[0..7]=outFlag1, out[8..15]=outFlag2, out[15]=outMsb); // the reason we are creating these flags is because we want to access them when implementing the zr control bit. This is because internal input pins cannot be indexed and the output pin cannot be used as an input, so we need to delcare this flag here that we can access later.
-
+    Mux16(a=tOut3, b=tOut4, sel=no, out=out, out=outFlag, out[0..7]=outFlag1, out[8..15]=outFlag2, out[15]=outMsb); // internal input pins cannot be indexed and the output pin cannot be used as an input, so I created sub busses from the out connection line to be accessed later
     // zr output control bit
     Or8Way(in=outFlag1, out=tOut5);
     Or8Way(in=outFlag2, out=tOut6);
