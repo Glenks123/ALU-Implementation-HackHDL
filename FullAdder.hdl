@@ -1,0 +1,9 @@
+CHIP FullAdder{
+    IN a, b, c;
+    OUT sum, carry;
+
+    PARTS:
+    HalfAdder(a=a, b=b, sum=tSum, carry=t1Carry);
+    HalfAdder(a=tSum, b=c, sum=sum, carry=t2Carry);
+    Or(a=t1Carry, b=t2Carry, out=carry);
+}
